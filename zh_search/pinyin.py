@@ -47,16 +47,22 @@ def pinyin_run(fuzzy = 0, query = None):
     if not query:
       return
     
-    cursor.execute("select pinyin,simplified,definition,traditional,freq from Chinese where pinyin like ? order by freq desc limit 35",[process_query(query)]) 
+    cursor.execute("""select pinyin,simplified,definition,traditional,freq 
+      from Chinese 
+      where pinyin like ? 
+      order by freq desc 
+      limit 35""",[process_query(query)]) 
   
     for row in cursor:
-      pinyin = row[0]
-      simplified = row[1]
-      definition = row[2]
-      traditional = row[3]
-      frequency = row[4]
+    
+      pinyin, simplified, definition, traditional, frequency = row
       
-      message = "%s / %s\n%s\n%s\nFreq:%s" % (simplified, traditional, pinyin, definition, frequency)
+      message = "%s / %s\n%s\n%s\nFreq:%s" % (
+        simplified,
+        traditional,
+        pinyin,
+        definition,
+        frequency)
       
       droid.dialogCreateAlert("Result", message)
       droid.dialogSetPositiveButtonText('Continue')
@@ -148,7 +154,10 @@ def return_fuzzy_matches(query):
       additional_queries = []
       
       for q in queries:
-        additional_query = q.replace(match['syllable'], soundalike, 1)
+        r = re.compile(match['syllable'] + '($|[^a-z]{1})')
+        if r.search(q):
+          additional_query = r.sub(soundalike + r'\1',q,1)
+        #additional_query = q.replace(match['syllable'], soundalike, 1)
         
         if additional_query not in queries:
           additional_queries.append(additional_query)
@@ -178,6 +187,8 @@ def process_query(query):
   >>> process_query('nan3 du3')
   'nan3 du3'
   >>> process_query('nan')
+  'nan_'
+  >>> process_query('nan ')
   'nan_'
   >>> process_query('nan  ')
   'nan%'
@@ -223,6 +234,10 @@ def process_query(query):
   r = re.compile('([a-z:]+)$')
   if r.search(query):
     query = r.sub(r'\1_',query)
+    
+  r = re.compile('([a-z:]+) $')
+  if r.search(query):
+    query = r.sub(r'\1_',query)
   
   r = re.compile('([a-z:]+) ')
   if r.search(query):
@@ -233,6 +248,6 @@ def process_query(query):
           
 if __name__ == '__main__':
   pinyin_run()
-  # import doctest
-  # doctest.testmod()
+  #import doctest
+  #doctest.testmod()
   

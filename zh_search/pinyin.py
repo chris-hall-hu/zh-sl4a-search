@@ -157,7 +157,6 @@ def return_fuzzy_matches(query):
         r = re.compile(match['syllable'] + '($|[^a-z]{1})')
         if r.search(q):
           additional_query = r.sub(soundalike + r'\1',q,1)
-        #additional_query = q.replace(match['syllable'], soundalike, 1)
         
         if additional_query not in queries:
           additional_queries.append(additional_query)
@@ -209,7 +208,7 @@ def process_query(query):
   """
   
   # To support the umlaut version of u.
-  r = re.compile('ü{1}')
+  r = re.compile(u'ü{1}')
   if r.search(query):
     query = r.sub(r'u:',query)
   
@@ -222,23 +221,28 @@ def process_query(query):
   r = re.compile('%([a-z])')
   if r.search(query):
     query = r.sub(r'% \1',query)
-    
+   
+  # Convert double space to % wildcard. 
   r = re.compile(' {2}')
   if r.search(query):
     query = r.sub(r'% ',query)
   
+  # Trim end space from queries that end in %.
   r = re.compile('(% )$')
   if r.search(query):
     query = r.sub(r'%',query)
   
+  # Append _ to naked syllables at the end of the query.
   r = re.compile('([a-z:]+)$')
   if r.search(query):
     query = r.sub(r'\1_',query)
-    
+  
+  # Append _ to queries that end with syllables and space. 
   r = re.compile('([a-z:]+) $')
   if r.search(query):
     query = r.sub(r'\1_',query)
   
+  # Append _ to syllables which are follwed by a space.
   r = re.compile('([a-z:]+) ')
   if r.search(query):
     query = r.sub(r'\1_ ',query)

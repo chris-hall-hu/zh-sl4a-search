@@ -29,7 +29,7 @@ def run():
     if 'which' in response or not 'item' in response:
       break
  
-    #Retrive and call the appropriate zh_search callback.
+    # Retrive and call the appropriate zh_search callback.
     zh.menu.get_callbacks()[response["item"]]()
 
 

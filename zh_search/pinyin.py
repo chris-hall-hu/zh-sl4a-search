@@ -208,44 +208,28 @@ def process_query(query):
   """
   
   # To support the umlaut version of u.
-  r = re.compile(u'ü{1}')
-  if r.search(query):
-    query = r.sub(r'u:',query)
-  
-  # To support more conventional wildcards.
-  r = re.compile('\?{1}')
-  if r.search(query):
-    query = r.sub(r' %',query)
+  query = re.sub(u'ü{1}', r'u:', query)
     
+  # To support more conventional wildcards.
+  query = re.sub('\?{1}', r' %', query)
+  
   # Clean up % that need extra space.
-  r = re.compile('%([a-z])')
-  if r.search(query):
-    query = r.sub(r'% \1',query)
+  query = re.sub('%([a-z])', r'% \1', query)
    
-  # Convert double space to % wildcard. 
-  r = re.compile(' {2}')
-  if r.search(query):
-    query = r.sub(r'% ',query)
+  # Convert double space to % wildcard.
+  query = re.sub(' {2}', r'% ', query)
   
   # Trim end space from queries that end in %.
-  r = re.compile('(% )$')
-  if r.search(query):
-    query = r.sub(r'%',query)
+  query = re.sub('(% )$', r'%', query)
   
   # Append _ to naked syllables at the end of the query.
-  r = re.compile('([a-z:]+)$')
-  if r.search(query):
-    query = r.sub(r'\1_',query)
+  query = re.sub('([a-z:]+)$', r'\1_', query)
   
   # Append _ to queries that end with syllables and space. 
-  r = re.compile('([a-z:]+) $')
-  if r.search(query):
-    query = r.sub(r'\1_',query)
+  query = re.sub('([a-z:]+) $', r'\1_', query)
   
   # Append _ to syllables which are follwed by a space.
-  r = re.compile('([a-z:]+) ')
-  if r.search(query):
-    query = r.sub(r'\1_ ',query)
+  query = re.sub('([a-z:]+) ', r'\1_ ', query)
     
   return query
   

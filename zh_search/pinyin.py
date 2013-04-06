@@ -219,7 +219,7 @@ def process_query(query):
   # Convert double space to % wildcard.
   query = re.sub(' {2}', r'% ', query)
   
-  # Trim end space from queries that end in %.
+  # Trim final space from queries that end in %.
   query = re.sub('(% )$', r'%', query)
   
   # Append _ to naked syllables at the end of the query.

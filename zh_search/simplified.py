@@ -17,7 +17,7 @@ import sqlite3
 
 import android
 
-import config
+import config as c
 
 
 def return_menu_items():
@@ -28,12 +28,12 @@ def return_menu_items():
   
 def simplified_run(database = None):
   
-  conn = sqlite3.connect(config.database)
+  conn = sqlite3.connect(c.DATABASE_PATH)
   cursor = conn.cursor()
 
   droid = android.Android()
   
-  log = codecs.open(config.logfile,'a','utf-8')
+  log = codecs.open(c.LOGFILE_PATH,'a','utf-8')
   
   while 1:
      

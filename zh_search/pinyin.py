@@ -16,7 +16,7 @@ import sqlite3
 
 import android
 
-import config
+import config as c
 
 
 droid = android.Android()
@@ -34,10 +34,10 @@ def return_menu_items():
 
 def pinyin_run(fuzzy = 0, query = None):
 
-  conn = sqlite3.connect(config.database)
+  conn = sqlite3.connect(c.DATABASE_PATH)
   cursor = conn.cursor()
   
-  log = codecs.open(config.logfile,'a','utf-8')
+  log = codecs.open(c.LOGFILE_PATH,'a','utf-8')
   
   while 1:
      
@@ -129,23 +129,23 @@ def return_fuzzy_matches(query):
   queries = [query]
 
   # Isolate the syllables in the query.
-  r = re.compile('[a-z]{1,5}')
+  r = re.compile('[a-z]{1,%d}' % c.MAX_SYLLABLE_LENGTH)
   syllables = r.findall(query)
   syllable_list = []
   
   # Add more syllables from the soundalikes
   additional_syllables = []
   for syllable in syllables:
-    if syllable in config.soundalikes:
-      additional_syllables = additional_syllables + config.soundalikes[syllable]
+    if syllable in c.SOUNDALIKES:
+      additional_syllables = additional_syllables + c.SOUNDALIKES[syllable]
   
   syllables = syllables + additional_syllables
   
   # Create a list of syllables mapped to sound_alikes they may have.
   for syllable in syllables:
-    if syllable in config.soundalikes:
+    if syllable in c.SOUNDALIKES:
       syllable_list.append({'syllable' : syllable,
-        'soundalikes' : config.soundalikes[syllable],
+        'soundalikes' : c.SOUNDALIKES[syllable],
       })
   
   # Loop over the syllable_map and generate new queries for combinations.

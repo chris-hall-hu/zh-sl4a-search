@@ -5,21 +5,22 @@ Configuration for the Chinese search package.
 import os
 
 # Dictionary database used for searches.
-database= os.path.dirname(__file__) + '/data/' + 'chinese.sqlite'
+DATABASE_PATH = os.path.dirname(__file__) + '/data/' + 'chinese.sqlite'
 
 # Log file used for saving entries of interest.
-logfile = os.path.dirname(__file__) + '/data/' + 'log.txt'
+LOGFILE_PATH = os.path.dirname(__file__) + '/data/' + 'log.txt'
 
 # Dictionary of soundalikes
-soundalikes = {'shi' : ['si','she'],
+SOUNDALIKES = {'shi' : ['si','she'],
   'si' : ['shi', 'she'],
   'gan' : ['gang', 'guang'],
   'gang' : ['gan', 'guang'],
   'guang' : ['gan', 'gang'],
   'shan' : ['shang'],
   'shang' : ['shan'],
-  'cai' : ['tai'],
-  'tai' : ['cai'],
+  'cai' : ['tai','zai'],
+  'zai' : ['tai','cai'],
+  'tai' : ['cai','zai'],
   'she' : ['shi', 'si'],
   'shen' : ['sheng'],
   'sheng' : ['shen'],
@@ -40,4 +41,11 @@ soundalikes = {'shi' : ['si','she'],
   'heng' : ['hen'],
   'gen' : ['geng'],
   'geng' : ['gen'],
+  'zhan' : ['zhang', 'zhuang'],
+  'zhang' : ['zhan','zhuang'],
+  'zhuang' : ['zhan', 'zhang'],
 }
+
+# The maximum length of a syllable for tokenising.
+MAX_SYLLABLE_LENGTH = 6;
+

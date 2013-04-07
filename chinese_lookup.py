@@ -1,9 +1,9 @@
-""" Ui entry point for Chinese search.
+""" sl4a ui entry point for Chinese search zh_search package.
 
 Get the menu items from the package and present user with
 choice via android dialog.
 
-Run appropriate callback function dependant on user choice.
+Run appropriate callback functions dependant on user choices.
 
 """
 

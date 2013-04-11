@@ -136,16 +136,16 @@ def return_fuzzy_matches(query):
   # Add more syllables from the soundalikes
   additional_syllables = []
   for syllable in syllables:
-    if syllable in c.SOUNDALIKES:
-      additional_syllables = additional_syllables + c.SOUNDALIKES[syllable]
+    if syllable in c.SOUND_ALIKES:
+      additional_syllables = additional_syllables + c.SOUND_ALIKES[syllable]
   
   syllables = syllables + additional_syllables
   
   # Create a list of syllables mapped to sound_alikes they may have.
   for syllable in syllables:
-    if syllable in c.SOUNDALIKES:
+    if syllable in c.SOUND_ALIKES:
       syllable_list.append({'syllable' : syllable,
-        'soundalikes' : c.SOUNDALIKES[syllable],
+        'soundalikes' : c.SOUND_ALIKES[syllable],
       })
   
   # Loop over the syllable_map and generate new queries for combinations.

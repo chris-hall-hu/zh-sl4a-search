@@ -13,6 +13,7 @@ __author__ = 'Chris Hall<chris@clockwork-language.co.uk>'
 import codecs
 import re
 import sqlite3
+import time
 
 import android
 
@@ -108,6 +109,8 @@ def pinyin_run_fuzzy():
   
   queries = return_fuzzy_matches(query)
   
+  queries.sort()
+  
   while 1:
     
     droid.dialogCreateAlert('Pick a query')
@@ -117,7 +120,7 @@ def pinyin_run_fuzzy():
     
     response = droid.dialogGetResponse().result
       
-    # 'Which' means exit has been selected, items are the menu choices.
+    # 'which' means exit has been selected, items are the menu choices.
     if 'which' in response or not 'item' in response:
       break
       
@@ -125,7 +128,14 @@ def pinyin_run_fuzzy():
 
 
 def return_fuzzy_matches(query):
-
+  
+  title = 'Processing'
+  message = 'Checking alternatives!'
+  droid.dialogCreateSpinnerProgress(title, message)
+  
+  droid.dialogShow()
+  
+  # Prepare for a list of queries.
   queries = [query]
 
   # Isolate the syllables in the query.
@@ -164,6 +174,8 @@ def return_fuzzy_matches(query):
       queries = queries + additional_queries
 
   # Return a deduped list of queries.
+  droid.DialogDismiss()
+  
   return list(set(queries))
 
 

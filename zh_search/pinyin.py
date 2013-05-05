@@ -106,15 +106,22 @@ def pinyin_run(fuzzy = 0, query = None):
 def pinyin_run_fuzzy():
   
   query = get_query()
-  
   queries = return_fuzzy_matches(query)
   
   queries.sort()
+  queries_counted = []
+  
+  conn = sqlite3.connect(c.DATABASE_PATH)
+    
+  for query in queries:
+    queries_counted.append(get_search_count(query, conn))
+  
+  conn.close()
   
   while 1:
     
     droid.dialogCreateAlert('Pick a query')
-    droid.dialogSetItems(queries)
+    droid.dialogSetItems(queries_counted)
     droid.dialogSetNegativeButtonText('Back')
     droid.dialogShow()
     
@@ -125,6 +132,20 @@ def pinyin_run_fuzzy():
       break
       
     pinyin_run(1, queries[response["item"]])
+
+
+def get_search_count(query, conn):
+  cursor = conn.cursor()
+  
+  cursor.execute("""select count(*)
+      from Chinese 
+      where pinyin like ? 
+      """,[process_query(query)]) 
+ 
+  for row in cursor:
+    count = row[0]
+  
+  return query + '(%d)' % (count)
 
 
 def return_fuzzy_matches(query):

@@ -51,6 +51,8 @@ SOUND_ALIKES = {
   'zhuang' : ['zhan', 'zhang'],
   'zhe' : ['ze'],
   'ze' : ['zhe'],
+  'zhou' : ['zhao'],
+  'zhao' : ['zhou'],
 }
 
 # The maximum length of a syllable for tokenising.

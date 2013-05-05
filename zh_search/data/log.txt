@@ -20,3 +20,19 @@ mi4 jie1 : 密接 : 密接 : closely connected|inseparably related : 0.0
 jian4 gou4 : 建构 : 建構 : to construct (often sth abstract, such as good relations)|to set up|to develop|construction (abstract)|architecture : 3.94
 gu3 piao4 : 股票 : 股票 : share|stock (market) : 25.2chu2 qu4 : 除去 : 除去 : to eliminate|to remove|except for : 6.84
 chu1 nian2 : 初年 : 初年 : early years : 2.18
+an4 zhao4 : 按照 : 按照 : according to|in accordance with|in the light of|on the basis of : 94.88
+xian2 xia2 : 闲暇 : 閑暇 : leisure|free time|unoccupied|not in use : 3.47
+pi2 lao2 : 疲劳 : 疲勞 : fatigue|wearily|weariness|weary : 13.14
+xian2 : 闲 : 閑 : to stay idle|to be unoccupied|not busy|leisure|enclosure : 28.38
+yu2 le4 : 娱乐 : 娛樂 : to entertain|to amuse|entertainment|recreation|amusement|hobby|fun|joy : 57.81
+xiao3 chou3 : 小丑 : 小丑 : clown : 3.64
+wai4 hao4 : 外号 : 外號 : nickname : 5.63
+lu:3 tu2 : 旅途 : 旅途 : journey|trip : 10.38
+er4 ce4 : 二侧 : 二側 : two sides : 0.0
+hong1 hong1 : 轰轰 : 轟轟 : booming|roaring : 1.09
+an4 zhao4 : 按照 : 按照 : according to|in accordance with|in the light of|on the basis of : 94.88
+bo1 fu4 : 拨付 : 撥付 : appropriate sum of money : 0.0
+bo1 fu2 : 波幅 : 波幅 : amplitude : 0.0
+bo2 fu4 : 驳复 : 駁復 : to refute : 0.0
+bao3 hu4 : 保护 : 保護 : to protect|to defend|to safeguard|protection|CL:種|种[zhong3] : 99.71
+wang4 diao4 : 忘掉 : 忘掉 : to forget : 9.51

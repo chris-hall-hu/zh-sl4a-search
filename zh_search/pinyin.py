@@ -78,8 +78,6 @@ def pinyin_run(fuzzy = 0, query = None):
         
       if response and response['which'] == 'neutral':
         print >> log, "%s : %s : %s : %s : %s" % (pinyin, simplified, traditional, definition, frequency)
-        
-      print pinyin
 
     if not fuzzy:
       droid.dialogCreateAlert("Continue?", 'Search again?')

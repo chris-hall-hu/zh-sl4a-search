@@ -14,8 +14,11 @@ LOGFILE_PATH = os.path.dirname(__file__) + '/data/' + 'log.txt'
 SOUND_ALIKES = {
   'cai' : ['tai','zai'],
   'che' : ['chi'],
+  'chen' : ['cheng'],
+  'cheng' : ['chen'],
   'chi' : ['che'],
   'chu' : ['qu'],
+  'ci' : ['zi'],
   'cong' : ['tong'],
   'fan' : ['fang'],
   'fang' : ['fan'],
@@ -53,6 +56,7 @@ SOUND_ALIKES = {
   'ze' : ['zhe'],
   'zhou' : ['zhao'],
   'zhao' : ['zhou'],
+  'zi' : ['ci'],
 }
 
 # The maximum length of a syllable for tokenising.

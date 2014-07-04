@@ -64,7 +64,7 @@ SOUND_ALIKES = {
   'yue' : ['yu'],
   'zai' : ['tai','cai'],
   'zhan' : ['zhang', 'zhuang'],
-  'zhe' : ['zhi'],
+  'zhi' : ['zhe', 'ze'],
   'zhang' : ['zhan','zhuang'],
   'zhuang' : ['zhan', 'zhang'],
   'zhe' : ['ze','zhi'],

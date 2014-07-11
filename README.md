@@ -25,3 +25,5 @@ This ia reasonably advanced though and despite allowing me to try this out on a 
 ##Usage
 
 ##Technical
+
+The application uses the Scripting languages for Android [SL4A](http://code.google.com/p/android-scripting/) and needs the [Python for Android](http://code.google.com/p/python-for-android/) installed to work with this. Install the code from this repository somewhere under the directory where SL4A scripts are and run the file ```chinese_lookup.py```. There is more of an [introduction to SL4A here](http://www.ibm.com/developerworks/library/mo-python-sl4a-1/).

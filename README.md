@@ -28,4 +28,12 @@ The application uses the Scripting languages for Android [SL4A](http://code.goog
 
 ##Searching
 
+A variety of searches against the dictionary are offered for debug purposes the only one of any interest though is the fuzzy pinying option. 
+
+Enter the pinyin syallables as you hear them for a word or phrase with a space between each one you can omit the space from the end. Tone numbers are optional, if you are sure of the tone for a syllable it may help to narrow down options. 
+"gang cai" will return words that match the syllables gang and cai plus homonyms (eg. gan tai etc.) 
+"gang1 cai2" will return word that match the syllable gang and cia plus homonyms in first and second tone.
+"gang1 cai" as above but first tone for the first syllable and any tone for the second.
+
+You can use a "?" if you have no idea about part of a word, this can result in a lot of hits but may still be useful as results are returned by frequency of use. If you enter "shen ? jia" for example result options will be returned for 'shen ? jie(11)' and 'sheng ? jie(10)'. The first result for 'sheng ? jie' is 'Sheng4 dan4 jie2' or "Christmas" the second is "sheng1 ping2 jian3 jie4" or "biographic sketch", at this point common sense and context are likely to take over.  
 
